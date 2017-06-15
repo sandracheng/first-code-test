@@ -73,8 +73,8 @@ int DiffusionModel() {
                            
    for (int pCount = 0; pCount<totParticle; pCount++) { //loop through total number of particles,Yan..
     int dist=0;                         //counter for the displacement of a single particle. We reset to 0 for each particle.
-    for (int step = 0; step < 1000; step++){  //loop thru steps. Generate random number 0-100 to determine how the particle moves 
-	                                      //at each step                                                                    
+    for (int step = 0; step < 1000; step++){ //loop thru steps. Generate random number 0-100 to determine how the particle moves 
+	                                     //at each step                                                                    
        int r = rand()% 100;              // if r less than  50, walker moves forward 1 space, otherwise it moves back 1 space
          //printf("same  %d ", r);
          if (r < 50){
@@ -92,7 +92,7 @@ int DiffusionModel() {
     //printf("counter:%d; final dist:%d\n", pCount, finalDist[pCount]);
     // sort out the data in a histogram here, since the above comment works. Do it with root commands.
                h1->Draw("hist");  
-         }  // the total particle loop end curly bracket
+   }  // the total particle loop end curly bracket
   h1->Fit("gaus");                   
   Double_t mean =  gaus->GetParameter(1);
   Double_t sigma =  gaus->GetParameter(2);
